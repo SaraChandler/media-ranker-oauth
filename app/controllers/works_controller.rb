@@ -64,7 +64,7 @@ class WorksController < ApplicationController
   def destroy
     if @work.user != @login_user
       flash[:status] = :failure
-      flash[:result_text] = "Log in to do that, please."
+      flash[:result_text] = "This isn't yours to destroy."
       redirect_to root_path
     end
     @work.destroy
