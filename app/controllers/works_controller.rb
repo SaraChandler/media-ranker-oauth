@@ -5,6 +5,9 @@ class WorksController < ApplicationController
   skip_before_action :find_user, only: [:root]
 
   def root
+    if session[:user_id]
+      @login_user = User.find_by(id: session[:user_id])
+    end 
     @albums = Work.best_albums
     @books = Work.best_books
     @movies = Work.best_movies
